@@ -13,5 +13,9 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(Exception):
             calculator.parse_operator(".")
 
+    def test_parse_operand_real(self):
+        self.assertEqual(calculator.parse_operand("1.2"), 1.2)
+        self.assertEqual(calculator.parse_operand("pi"), 3.14)
+
 if __name__ == "__main__":
     unittest.main()

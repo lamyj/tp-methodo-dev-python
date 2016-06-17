@@ -20,20 +20,30 @@ def parse_operator(operator):
 
     return operations[operator]
 
+def parse_operand(value):
+    """ Return the value contained in the operand, which must be a real number 
+        or the value "pi".
+    """
+
+    if value == "pi":
+        return 3.14
+    else:
+        return float(value)
+
 def addition(left, right):
     """Parse left and right as numbers, return a string containing their sum."""
 
-    return str(float(left)+float(right))
+    return str(parse_operand(left)+parse_operand(right))
 
 def subtraction(left, right):
     """Parse left and right as numbers, return a string containing their difference."""
 
-    return str(float(left)-float(right))
+    return str(parse_operand(left)-parse_operand(right))
 
 def multiplication(left, right):
     """Parse left and right as numbers, return a string containing their product."""
 
-    return str(float(left)*float(right))
+    return str(parse_operand(left)*parse_operand(right))
 
 def division(left, right):
     """ Parse left and right as numbers, return a string containing their quotient.
@@ -42,7 +52,7 @@ def division(left, right):
 
     result = None
     try:
-        result = float(left)/float(right)
+        result = parse_operand(left)/parse_operand(right)
     except ZeroDivisionError as e:
         result = float("nan")
     return str(result)
