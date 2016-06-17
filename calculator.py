@@ -29,7 +29,7 @@ def parse_operand(value):
     """
 
     if value == "pi":
-        return 3.14
+        return math.pi
     else:
         return float(value)
 

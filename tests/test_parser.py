@@ -1,3 +1,4 @@
+import math
 import unittest
 
 import calculator
@@ -15,7 +16,7 @@ class TestParser(unittest.TestCase):
 
     def test_parse_operand_real(self):
         self.assertEqual(calculator.parse_operand("1.2"), 1.2)
-        self.assertEqual(calculator.parse_operand("pi"), 3.14)
+        self.assertEqual(calculator.parse_operand("pi"), math.pi)
 
 if __name__ == "__main__":
     unittest.main()

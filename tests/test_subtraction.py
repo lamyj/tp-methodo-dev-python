@@ -17,7 +17,7 @@ class TestSubtraction(unittest.TestCase):
 
     def test_pi(self):
         result = calculator.subtraction("pi", "1.2")
-        self.assertEqual(result, "1.94")
+        self.assertEqual(result, "1.94159265359")
 
 if __name__ == "__main__":
     unittest.main()
