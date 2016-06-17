@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
+import math
 import sys
 
 def parse_operator(operator):
@@ -26,7 +27,7 @@ def parse_operand(value):
     """
 
     if value == "pi":
-        return 3.14
+        return math.pi
     else:
         return float(value)
 
