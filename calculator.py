@@ -11,7 +11,8 @@ def parse_operator(operator):
     operations = {
         "+": addition,
         "-": subtraction,
-        "*": multiplication
+        "*": multiplication,
+        "/": division,
     }
 
     if operator not in operations:
@@ -33,6 +34,18 @@ def multiplication(left, right):
     """Parse left and right as numbers, return a string containing their product."""
 
     return str(float(left)*float(right))
+
+def division(left, right):
+    """ Parse left and right as numbers, return a string containing their quotient.
+        If the right operand equals zero, NaN is returned.
+    """
+
+    result = None
+    try:
+        result = float(left)/float(right)
+    except ZeroDivisionError as e:
+        result = float("nan")
+    return str(result)
 
 def main():
     operator = raw_input("Operator: ")

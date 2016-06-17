@@ -7,6 +7,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual(calculator.parse_operator("+"), calculator.addition)
         self.assertEqual(calculator.parse_operator("-"), calculator.subtraction)
         self.assertEqual(calculator.parse_operator("*"), calculator.multiplication)
+        self.assertEqual(calculator.parse_operator("/"), calculator.division)
 
     def test_parse_unknown_operator(self):
         with self.assertRaises(Exception):
