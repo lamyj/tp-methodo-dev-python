@@ -14,3 +14,7 @@ class TestTrigonometric(unittest.TestCase):
     def test_sin_pi(self):
         result = calculator.sin("pi")
         self.assertTrue(float(result) < 1e8)
+
+    def test_tan(self):
+        result = calculator.tan("0")
+        self.assertTrue(result, "0.0")

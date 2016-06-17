@@ -16,6 +16,7 @@ def parse_operator(operator):
         "/": division,
         "cos": cos,
         "sin": sin,
+        "tan": tan,
     }
 
     if operator not in operations:
@@ -43,6 +44,7 @@ def parse_operands(operation):
         division: 2,
         cos: 1,
         sin: 1,
+        tan: 1,
     }
 
     if operation not in counts:
@@ -94,6 +96,13 @@ def sin(angle):
     """
 
     return str(math.sin(parse_operand(angle)))
+
+def tan(angle):
+    """ Parse angle as a number and return a string containing the tangent of
+        the value in radians.
+    """
+
+    return str(math.tan(parse_operand(angle)))
 
 def main():
     operator = raw_input("Operator: ")
