@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
+import math
 import sys
 
 def parse_operator(operator):
@@ -13,6 +14,8 @@ def parse_operator(operator):
         "-": subtraction,
         "*": multiplication,
         "/": division,
+        "cos": cos,
+        "sin": sin,
     }
 
     if operator not in operations:
@@ -29,6 +32,27 @@ def parse_operand(value):
         return 3.14
     else:
         return float(value)
+
+def parse_operands(operation):
+    """Read the number of operands corresponding to operation."""
+
+    counts = {
+        addition: 2,
+        subtraction: 2,
+        multiplication: 2,
+        division: 2,
+        cos: 1,
+        sin: 1,
+    }
+
+    if operation not in counts:
+        raise Exception("Unknown operator: {}".format(operation))
+
+    operands = []
+    for i in range(counts[operation]):
+        value = raw_input("Operand {}: ".format(1+i))
+        operands.append(value)
+    return operands
 
 def addition(left, right):
     """Parse left and right as numbers, return a string containing their sum."""
@@ -57,6 +81,20 @@ def division(left, right):
         result = float("nan")
     return str(result)
 
+def cos(angle):
+    """ Parse angle as a number and return a string containing the cosine of
+        the value in radians.
+    """
+
+    return str(math.cos(parse_operand(angle)))
+
+def sin(angle):
+    """ Parse angle as a number and return a string containing the sine of
+        the value in radians.
+    """
+
+    return str(math.sin(parse_operand(angle)))
+
 def main():
     operator = raw_input("Operator: ")
     try:
@@ -65,9 +103,8 @@ def main():
         print(e)
         return 1
 
-    left = raw_input("Left operand: ")
-    right = raw_input("Right operand: ")
-    result = operation(left, right)
+    operands = parse_operands(operation)
+    result = operation(*operands)
     print("Result:", result)
 
 if __name__ == "__main__":
